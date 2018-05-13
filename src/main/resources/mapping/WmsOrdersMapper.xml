@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.uqiauto.statistics.dao.WmsOrdersMapper" >
+  <resultMap id="BaseResultMap" type="com.uqiauto.statistics.dto.WmsOrdersDTO" >
+    <id column="id_" property="id" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="order_sn" property="orderSn" jdbcType="VARCHAR" />
+    <result column="order_money" property="orderMoney" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id_, create_time, order_sn, transfer_money, order_money, buyer_address, buyer_id, 
+    store_name, order_status, buyer_name, buyer_phone, order_shop_cnt, payment_code, 
+    comp_id, store_id, bill_state, pay_sn, goods_money, buyer_account, peferential_amount, 
+    customer_address_id, account, account_name, inquiry_num, ask_id, view_account, view_date, 
+    check_status, taxmoney, back, iftaxes, require_id, order_from, answer_goods_id, lsky_paper, 
+    lsky_paper_status, business_audit_back, finance_audit_back, cancel_back, hope_arrive_date, 
+    store_audit_back, lskyNo, transportWay, transportCompany, cancel, cancel_remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wms_orders
+    where id_ = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wms_orders
+    where id_ = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uqiauto.statistics.model.WmsOrders" >
+    insert into wms_orders (id_, create_time, order_sn, 
+      transfer_money, order_money, buyer_address, 
+      buyer_id, store_name, order_status, 
+      buyer_name, buyer_phone, order_shop_cnt, 
+      payment_code, comp_id, store_id, 
+      bill_state, pay_sn, goods_money, 
+      buyer_account, peferential_amount, customer_address_id, 
+      account, account_name, inquiry_num, 
+      ask_id, view_account, view_date, 
+      check_status, taxmoney, back, 
+      iftaxes, require_id, order_from, 
+      answer_goods_id, lsky_paper, lsky_paper_status, 
+      business_audit_back, finance_audit_back, cancel_back, 
+      hope_arrive_date, store_audit_back, lskyNo, 
+      transportWay, transportCompany, cancel, 
+      cancel_remark)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{orderSn,jdbcType=VARCHAR}, 
+      #{transferMoney,jdbcType=DECIMAL}, #{orderMoney,jdbcType=DECIMAL}, #{buyerAddress,jdbcType=VARCHAR}, 
+      #{buyerId,jdbcType=INTEGER}, #{storeName,jdbcType=VARCHAR}, #{orderStatus,jdbcType=VARCHAR}, 
+      #{buyerName,jdbcType=VARCHAR}, #{buyerPhone,jdbcType=VARCHAR}, #{orderShopCnt,jdbcType=INTEGER}, 
+      #{paymentCode,jdbcType=VARCHAR}, #{compId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, 
+      #{billState,jdbcType=VARCHAR}, #{paySn,jdbcType=VARCHAR}, #{goodsMoney,jdbcType=DECIMAL}, 
+      #{buyerAccount,jdbcType=VARCHAR}, #{peferentialAmount,jdbcType=DECIMAL}, #{customerAddressId,jdbcType=INTEGER}, 
+      #{account,jdbcType=VARCHAR}, #{accountName,jdbcType=VARCHAR}, #{inquiryNum,jdbcType=VARCHAR}, 
+      #{askId,jdbcType=BIGINT}, #{viewAccount,jdbcType=VARCHAR}, #{viewDate,jdbcType=TIMESTAMP}, 
+      #{checkStatus,jdbcType=INTEGER}, #{taxmoney,jdbcType=VARCHAR}, #{back,jdbcType=VARCHAR}, 
+      #{iftaxes,jdbcType=VARCHAR}, #{requireId,jdbcType=BIGINT}, #{orderFrom,jdbcType=INTEGER}, 
+      #{answerGoodsId,jdbcType=BIGINT}, #{lskyPaper,jdbcType=VARCHAR}, #{lskyPaperStatus,jdbcType=VARCHAR}, 
+      #{businessAuditBack,jdbcType=VARCHAR}, #{financeAuditBack,jdbcType=VARCHAR}, #{cancelBack,jdbcType=VARCHAR}, 
+      #{hopeArriveDate,jdbcType=VARCHAR}, #{storeAuditBack,jdbcType=VARCHAR}, #{lskyno,jdbcType=VARCHAR}, 
+      #{transportway,jdbcType=VARCHAR}, #{transportcompany,jdbcType=VARCHAR}, #{cancel,jdbcType=INTEGER}, 
+      #{cancelRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.uqiauto.statistics.model.WmsOrders" >
+    insert into wms_orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id_,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="orderSn != null" >
+        order_sn,
+      </if>
+      <if test="transferMoney != null" >
+        transfer_money,
+      </if>
+      <if test="orderMoney != null" >
+        order_money,
+      </if>
+      <if test="buyerAddress != null" >
+        buyer_address,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="storeName != null" >
+        store_name,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="buyerName != null" >
+        buyer_name,
+      </if>
+      <if test="buyerPhone != null" >
+        buyer_phone,
+      </if>
+      <if test="orderShopCnt != null" >
+        order_shop_cnt,
+      </if>
+      <if test="paymentCode != null" >
+        payment_code,
+      </if>
+      <if test="compId != null" >
+        comp_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="billState != null" >
+        bill_state,
+      </if>
+      <if test="paySn != null" >
+        pay_sn,
+      </if>
+      <if test="goodsMoney != null" >
+        goods_money,
+      </if>
+      <if test="buyerAccount != null" >
+        buyer_account,
+      </if>
+      <if test="peferentialAmount != null" >
+        peferential_amount,
+      </if>
+      <if test="customerAddressId != null" >
+        customer_address_id,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="accountName != null" >
+        account_name,
+      </if>
+      <if test="inquiryNum != null" >
+        inquiry_num,
+      </if>
+      <if test="askId != null" >
+        ask_id,
+      </if>
+      <if test="viewAccount != null" >
+        view_account,
+      </if>
+      <if test="viewDate != null" >
+        view_date,
+      </if>
+      <if test="checkStatus != null" >
+        check_status,
+      </if>
+      <if test="taxmoney != null" >
+        taxmoney,
+      </if>
+      <if test="back != null" >
+        back,
+      </if>
+      <if test="iftaxes != null" >
+        iftaxes,
+      </if>
+      <if test="requireId != null" >
+        require_id,
+      </if>
+      <if test="orderFrom != null" >
+        order_from,
+      </if>
+      <if test="answerGoodsId != null" >
+        answer_goods_id,
+      </if>
+      <if test="lskyPaper != null" >
+        lsky_paper,
+      </if>
+      <if test="lskyPaperStatus != null" >
+        lsky_paper_status,
+      </if>
+      <if test="businessAuditBack != null" >
+        business_audit_back,
+      </if>
+      <if test="financeAuditBack != null" >
+        finance_audit_back,
+      </if>
+      <if test="cancelBack != null" >
+        cancel_back,
+      </if>
+      <if test="hopeArriveDate != null" >
+        hope_arrive_date,
+      </if>
+      <if test="storeAuditBack != null" >
+        store_audit_back,
+      </if>
+      <if test="lskyno != null" >
+        lskyNo,
+      </if>
+      <if test="transportway != null" >
+        transportWay,
+      </if>
+      <if test="transportcompany != null" >
+        transportCompany,
+      </if>
+      <if test="cancel != null" >
+        cancel,
+      </if>
+      <if test="cancelRemark != null" >
+        cancel_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSn != null" >
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="transferMoney != null" >
+        #{transferMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="orderMoney != null" >
+        #{orderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerAddress != null" >
+        #{buyerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerName != null" >
+        #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerPhone != null" >
+        #{buyerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderShopCnt != null" >
+        #{orderShopCnt,jdbcType=INTEGER},
+      </if>
+      <if test="paymentCode != null" >
+        #{paymentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="compId != null" >
+        #{compId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="billState != null" >
+        #{billState,jdbcType=VARCHAR},
+      </if>
+      <if test="paySn != null" >
+        #{paySn,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsMoney != null" >
+        #{goodsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerAccount != null" >
+        #{buyerAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="peferentialAmount != null" >
+        #{peferentialAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="customerAddressId != null" >
+        #{customerAddressId,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="inquiryNum != null" >
+        #{inquiryNum,jdbcType=VARCHAR},
+      </if>
+      <if test="askId != null" >
+        #{askId,jdbcType=BIGINT},
+      </if>
+      <if test="viewAccount != null" >
+        #{viewAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="viewDate != null" >
+        #{viewDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkStatus != null" >
+        #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="taxmoney != null" >
+        #{taxmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="back != null" >
+        #{back,jdbcType=VARCHAR},
+      </if>
+      <if test="iftaxes != null" >
+        #{iftaxes,jdbcType=VARCHAR},
+      </if>
+      <if test="requireId != null" >
+        #{requireId,jdbcType=BIGINT},
+      </if>
+      <if test="orderFrom != null" >
+        #{orderFrom,jdbcType=INTEGER},
+      </if>
+      <if test="answerGoodsId != null" >
+        #{answerGoodsId,jdbcType=BIGINT},
+      </if>
+      <if test="lskyPaper != null" >
+        #{lskyPaper,jdbcType=VARCHAR},
+      </if>
+      <if test="lskyPaperStatus != null" >
+        #{lskyPaperStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="businessAuditBack != null" >
+        #{businessAuditBack,jdbcType=VARCHAR},
+      </if>
+      <if test="financeAuditBack != null" >
+        #{financeAuditBack,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelBack != null" >
+        #{cancelBack,jdbcType=VARCHAR},
+      </if>
+      <if test="hopeArriveDate != null" >
+        #{hopeArriveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAuditBack != null" >
+        #{storeAuditBack,jdbcType=VARCHAR},
+      </if>
+      <if test="lskyno != null" >
+        #{lskyno,jdbcType=VARCHAR},
+      </if>
+      <if test="transportway != null" >
+        #{transportway,jdbcType=VARCHAR},
+      </if>
+      <if test="transportcompany != null" >
+        #{transportcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cancel != null" >
+        #{cancel,jdbcType=INTEGER},
+      </if>
+      <if test="cancelRemark != null" >
+        #{cancelRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uqiauto.statistics.model.WmsOrders" >
+    update wms_orders
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSn != null" >
+        order_sn = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="transferMoney != null" >
+        transfer_money = #{transferMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="orderMoney != null" >
+        order_money = #{orderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerAddress != null" >
+        buyer_address = #{buyerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null" >
+        store_name = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerName != null" >
+        buyer_name = #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerPhone != null" >
+        buyer_phone = #{buyerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderShopCnt != null" >
+        order_shop_cnt = #{orderShopCnt,jdbcType=INTEGER},
+      </if>
+      <if test="paymentCode != null" >
+        payment_code = #{paymentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="compId != null" >
+        comp_id = #{compId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="billState != null" >
+        bill_state = #{billState,jdbcType=VARCHAR},
+      </if>
+      <if test="paySn != null" >
+        pay_sn = #{paySn,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsMoney != null" >
+        goods_money = #{goodsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerAccount != null" >
+        buyer_account = #{buyerAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="peferentialAmount != null" >
+        peferential_amount = #{peferentialAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="customerAddressId != null" >
+        customer_address_id = #{customerAddressId,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null" >
+        account_name = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="inquiryNum != null" >
+        inquiry_num = #{inquiryNum,jdbcType=VARCHAR},
+      </if>
+      <if test="askId != null" >
+        ask_id = #{askId,jdbcType=BIGINT},
+      </if>
+      <if test="viewAccount != null" >
+        view_account = #{viewAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="viewDate != null" >
+        view_date = #{viewDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkStatus != null" >
+        check_status = #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="taxmoney != null" >
+        taxmoney = #{taxmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="back != null" >
+        back = #{back,jdbcType=VARCHAR},
+      </if>
+      <if test="iftaxes != null" >
+        iftaxes = #{iftaxes,jdbcType=VARCHAR},
+      </if>
+      <if test="requireId != null" >
+        require_id = #{requireId,jdbcType=BIGINT},
+      </if>
+      <if test="orderFrom != null" >
+        order_from = #{orderFrom,jdbcType=INTEGER},
+      </if>
+      <if test="answerGoodsId != null" >
+        answer_goods_id = #{answerGoodsId,jdbcType=BIGINT},
+      </if>
+      <if test="lskyPaper != null" >
+        lsky_paper = #{lskyPaper,jdbcType=VARCHAR},
+      </if>
+      <if test="lskyPaperStatus != null" >
+        lsky_paper_status = #{lskyPaperStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="businessAuditBack != null" >
+        business_audit_back = #{businessAuditBack,jdbcType=VARCHAR},
+      </if>
+      <if test="financeAuditBack != null" >
+        finance_audit_back = #{financeAuditBack,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelBack != null" >
+        cancel_back = #{cancelBack,jdbcType=VARCHAR},
+      </if>
+      <if test="hopeArriveDate != null" >
+        hope_arrive_date = #{hopeArriveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAuditBack != null" >
+        store_audit_back = #{storeAuditBack,jdbcType=VARCHAR},
+      </if>
+      <if test="lskyno != null" >
+        lskyNo = #{lskyno,jdbcType=VARCHAR},
+      </if>
+      <if test="transportway != null" >
+        transportWay = #{transportway,jdbcType=VARCHAR},
+      </if>
+      <if test="transportcompany != null" >
+        transportCompany = #{transportcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cancel != null" >
+        cancel = #{cancel,jdbcType=INTEGER},
+      </if>
+      <if test="cancelRemark != null" >
+        cancel_remark = #{cancelRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_ = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uqiauto.statistics.model.WmsOrders" >
+    update wms_orders
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      order_sn = #{orderSn,jdbcType=VARCHAR},
+      transfer_money = #{transferMoney,jdbcType=DECIMAL},
+      order_money = #{orderMoney,jdbcType=DECIMAL},
+      buyer_address = #{buyerAddress,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=INTEGER},
+      store_name = #{storeName,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      buyer_name = #{buyerName,jdbcType=VARCHAR},
+      buyer_phone = #{buyerPhone,jdbcType=VARCHAR},
+      order_shop_cnt = #{orderShopCnt,jdbcType=INTEGER},
+      payment_code = #{paymentCode,jdbcType=VARCHAR},
+      comp_id = #{compId,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=INTEGER},
+      bill_state = #{billState,jdbcType=VARCHAR},
+      pay_sn = #{paySn,jdbcType=VARCHAR},
+      goods_money = #{goodsMoney,jdbcType=DECIMAL},
+      buyer_account = #{buyerAccount,jdbcType=VARCHAR},
+      peferential_amount = #{peferentialAmount,jdbcType=DECIMAL},
+      customer_address_id = #{customerAddressId,jdbcType=INTEGER},
+      account = #{account,jdbcType=VARCHAR},
+      account_name = #{accountName,jdbcType=VARCHAR},
+      inquiry_num = #{inquiryNum,jdbcType=VARCHAR},
+      ask_id = #{askId,jdbcType=BIGINT},
+      view_account = #{viewAccount,jdbcType=VARCHAR},
+      view_date = #{viewDate,jdbcType=TIMESTAMP},
+      check_status = #{checkStatus,jdbcType=INTEGER},
+      taxmoney = #{taxmoney,jdbcType=VARCHAR},
+      back = #{back,jdbcType=VARCHAR},
+      iftaxes = #{iftaxes,jdbcType=VARCHAR},
+      require_id = #{requireId,jdbcType=BIGINT},
+      order_from = #{orderFrom,jdbcType=INTEGER},
+      answer_goods_id = #{answerGoodsId,jdbcType=BIGINT},
+      lsky_paper = #{lskyPaper,jdbcType=VARCHAR},
+      lsky_paper_status = #{lskyPaperStatus,jdbcType=VARCHAR},
+      business_audit_back = #{businessAuditBack,jdbcType=VARCHAR},
+      finance_audit_back = #{financeAuditBack,jdbcType=VARCHAR},
+      cancel_back = #{cancelBack,jdbcType=VARCHAR},
+      hope_arrive_date = #{hopeArriveDate,jdbcType=VARCHAR},
+      store_audit_back = #{storeAuditBack,jdbcType=VARCHAR},
+      lskyNo = #{lskyno,jdbcType=VARCHAR},
+      transportWay = #{transportway,jdbcType=VARCHAR},
+      transportCompany = #{transportcompany,jdbcType=VARCHAR},
+      cancel = #{cancel,jdbcType=INTEGER},
+      cancel_remark = #{cancelRemark,jdbcType=VARCHAR}
+    where id_ = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllOrders" resultMap="BaseResultMap">
+    SELECT id_,create_time,order_sn,order_money FROM wms_orders limit 0,10
+  </select>
+</mapper>
